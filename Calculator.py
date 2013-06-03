@@ -1,23 +1,4 @@
 # -*- coding: utf-8 -*-
-def select(opertionLabel):
-    print opertionLabel
-    print "1: BIN "
-    print "2: HEX "
-
-    while True:
-
-        choice = int(raw_input("BIN или HEX "))
-
-        if choice == 1:
-            print opertionLabel+' BIN'
-            print additionBin()
-
-        elif choice == 2:
-            print opertionLabel+' HEX'
-            print additionHex()
-        else:
-            print "введите 1 или 2 "
-
 def calculationBin(result):
     shownResult = ""
     if result > 0:
@@ -135,19 +116,46 @@ print "0: выход"
 
 while True:
 
-    choice = int(raw_input("Выберите действие из списка  "))
+    choice = int(raw_input("Выберите действие из списка "))
 
     if choice == 1:
-        opertionLabel='Сложение'
-        select(opertionLabel)
+        print "1: BIN "
+        print "2: HEX "
 
+        while True:
+
+            choice = int(raw_input("BIN или HEX "))
+
+            if choice == 1:
+                print 'Cложение BIN'
+                print additionBin()
+
+            elif choice == 2:
+                print 'Cложение HEX'
+                print additionHex()
+            else:
+                print "введите 1 или 2 "
 
     elif choice == 2:
-        opertionLabel='Вычитание'
-        select(opertionLabel)
+        print "1: BIN "
+        print "2: HEX "
+
+        while True:
+
+            choice = int(raw_input("BIN или HEX "))
+
+            if choice == 1:
+                print 'Вычитание BIN'
+                print subtractionBin()
+
+
+            elif choice == 2:
+                print 'Вычитание HEX'
+                print subtractionHex()
+            else:
+                print "введите 1 или 2 "
 
     elif choice == 0:
         exit()
     else:
         print "введите 1 или 2 "
-
