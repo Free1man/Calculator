@@ -8,11 +8,11 @@ def menu(x,y,z):
             choice = int(raw_input("BIN или HEX "))
 
             if choice == 1:
-                print x + 'Cложение BIN'
+                print x + ' BIN'
                 print y()
 
             elif choice == 2:
-                print x + 'Cложение HEX'
+                print x + ' HEX'
                 print z()
             else:
                 print "введите 1 или 2 "
@@ -81,28 +81,28 @@ def calculationHex(result):
         return "---"
 
 def additionBin():
-    print "Введите два чилса для сложения"
+    print "Введите два числа для сложения"
     firstNumber = int(raw_input("Первое число: "))
     secondNumber = int(raw_input("Второе число: "))
     result = int(firstNumber + secondNumber)
     print calculationBin(result)
 
 def additionHex():
-    print "Введите два чилса для сложения"
+    print "Введите два числа для сложения"
     firstNumber = int(raw_input("Первое число: "))
     secondNumber = int(raw_input("Второе число: "))
     result = int(firstNumber + secondNumber)
     print calculationHex(result)
 
 def subtractionBin():
-    return "Введите два чилса для вычитания"
+    return "Введите два числа для вычитания"
     firstNumber = int(raw_input("Первое число: "))
     secondNumber = int(raw_input("Второе число: "))
     result = int(firstNumber - secondNumber)
     print calculationBin(result)
 
 def subtractionHex():
-    print "Введите два чилса для вычитания"
+    print "Введите два с для вычитания"
     firstNumber = int(raw_input("Первое число: "))
     secondNumber = int(raw_input("Второе число: "))
     result = int(firstNumber - secondNumber)
@@ -119,16 +119,16 @@ while True:
     choice = int(raw_input("Выберите действие из списка  "))
 
     if choice == 1:
-        x = 'сложение'
+        x = 'Сложение'
         y = additionBin
         z = additionHex
 
         menu(x,y,z)
 
     elif choice == 2:
-        x = 'сложение'
-        y = additionBin
-        z = additionHex
+        x = 'Вычитание'
+        y = subtractionBin
+        z = subtractionHex
 
         menu(x,y,z)
 
