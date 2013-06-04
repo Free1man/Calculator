@@ -1,45 +1,36 @@
 # -*- coding: utf-8 -*-
-def calculationBin(result):
+def doBin(sign,result):
+
     shownResult = ""
+    while result > 0:
+        modulo = str(result % 2)
+        shownResult = modulo + shownResult
+        result = int(result / 2)
+    if 8 >= len(shownResult) > 0:
+        shownResult = 'b'+str(sign)+'0'*(8 - len(shownResult)-1)+str(shownResult)
+    elif 16 >= len(shownResult) > 8:
+        shownResult = 'b'+str(sign)+'0'*(16 - len(shownResult)-1)+str(shownResult)
+    elif 32 >= len(shownResult) > 16:
+        shownResult = 'b'+str(sign)+'0'*(32 - len(shownResult)-1)+str(shownResult)
+    elif 64 >= len(shownResult) > 32:
+        shownResult = 'b'+str(sign)+ '0'*(64 - len(shownResult)-1)+str(shownResult)
+    return shownResult
+
+def calculationBin(result):
+
     if result > 0:
-
-        while result > 0:
-            modulo = str(result % 2)
-            shownResult = modulo + shownResult
-            result = int(result / 2)
-
-        if 8 > len(shownResult) > 0:
-            shownResult = 'b'+'0'*(8 - len(shownResult))+str(shownResult)
-        elif 16 > len(shownResult) > 8:
-            shownResult = 'b'+'0'*(16 - len(shownResult))+str(shownResult)
-        elif 32 > len(shownResult) > 16:
-            shownResult = 'b'+'0'*(32 - len(shownResult))+str(shownResult)
-        elif 64 > len(shownResult) > 32:
-            shownResult = 'b'+'0'*(64 - len(shownResult))+str(shownResult)
-
+        sign = 0
+        return doBin(sign,result)
 
     elif result < 0:
 
         result = -result
-
-        while result > 0:
-            modulo = str(result % 2)
-            shownResult = modulo + shownResult
-            result = int(result / 2)
-        if 8 > len(shownResult) > 0:
-            shownResult = 'b1'+'0'*(8 - len(shownResult)-1)+str(shownResult)
-        elif 16 > len(shownResult) > 8:
-            shownResult = 'b1'+'0'*(16 - len(shownResult)-1)+str(shownResult)
-        elif 32 > len(shownResult) > 16:
-            shownResult = 'b1'+'0'*(32 - len(shownResult)-1)+str(shownResult)
-        elif 64 > len(shownResult) > 32:
-            shownResult = 'b1'+'0'*(64 - len(shownResult)-1)+str(shownResult)
+        sign = 1
+        return doBin(sign,result)
 
     elif result == 0:
 
         return 0
-
-    return shownResult
 
 def calculationHex(result):
     shownResult = ""
@@ -50,17 +41,17 @@ def calculationHex(result):
             modulo = result % 16
             if modulo == 10:
                 modulo = 'A'
-            if modulo == 11:
+            elif modulo == 11:
                 modulo = 'B'
-            if modulo == 12:
+            elif modulo == 12:
                 modulo = 'C'
-            if modulo == 13:
+            elif modulo == 13:
                 modulo = 'D'
-            if modulo == 14:
+            elif modulo == 14:
                 modulo = 'E'
-            if modulo == 15:
+            elif modulo == 15:
                 modulo = 'F'
-            if modulo < 10:
+            elif modulo < 10:
                 modulo = str(modulo)
 
             shownResult = modulo + shownResult
@@ -69,46 +60,37 @@ def calculationHex(result):
 
     elif result < 0:
 
-        return "производятся расчеты"
-
+        return "---"
 
 def additionBin():
     print "Введите два чилса для сложения"
     firstNumber = int(raw_input("Первое число: "))
     secondNumber = int(raw_input("Второе число: "))
-
     result = int(firstNumber + secondNumber)
-    return calculationBin(result)
-
+    print calculationBin(result)
 
 def additionHex():
     print "Введите два чилса для сложения"
     firstNumber = int(raw_input("Первое число: "))
     secondNumber = int(raw_input("Второе число: "))
-
     result = int(firstNumber + secondNumber)
-    return calculationHex(result)
-
-
+    print calculationHex(result)
 
 def subtractionBin():
-    print "Введите два чилса для вычитания"
+    return "Введите два чилса для вычитания"
     firstNumber = int(raw_input("Первое число: "))
     secondNumber = int(raw_input("Второе число: "))
-
     result = int(firstNumber - secondNumber)
-    return calculationBin(result)
+    print calculationBin(result)
 
 def subtractionHex():
     print "Введите два чилса для вычитания"
     firstNumber = int(raw_input("Первое число: "))
     secondNumber = int(raw_input("Второе число: "))
-
     result = int(firstNumber - secondNumber)
-    return calculationHex(result)
+    print calculationHex(result)
 
-
-
+__name__ == '__main__'
 
 print "1: +"
 print "2: -"
@@ -116,7 +98,7 @@ print "0: выход"
 
 while True:
 
-    choice = int(raw_input("Выберите действие из списка "))
+    choice = int(raw_input("Выберите действие из списка  "))
 
     if choice == 1:
         print "1: BIN "
@@ -159,3 +141,4 @@ while True:
         exit()
     else:
         print "введите 1 или 2 "
+
