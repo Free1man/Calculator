@@ -1,4 +1,22 @@
 # -*- coding: utf-8 -*-
+def menu(x,y,z):
+        print "1: BIN "
+        print "2: HEX "
+
+        while True:
+
+            choice = int(raw_input("BIN или HEX "))
+
+            if choice == 1:
+                print x + 'Cложение BIN'
+                print y()
+
+            elif choice == 2:
+                print x + 'Cложение HEX'
+                print z()
+            else:
+                print "введите 1 или 2 "
+
 def doBin(sign,result):
 
     shownResult = ""
@@ -101,41 +119,18 @@ while True:
     choice = int(raw_input("Выберите действие из списка  "))
 
     if choice == 1:
-        print "1: BIN "
-        print "2: HEX "
+        x = 'сложение'
+        y = additionBin
+        z = additionHex
 
-        while True:
-
-            choice = int(raw_input("BIN или HEX "))
-
-            if choice == 1:
-                print 'Cложение BIN'
-                print additionBin()
-
-            elif choice == 2:
-                print 'Cложение HEX'
-                print additionHex()
-            else:
-                print "введите 1 или 2 "
+        menu(x,y,z)
 
     elif choice == 2:
-        print "1: BIN "
-        print "2: HEX "
+        x = 'сложение'
+        y = additionBin
+        z = additionHex
 
-        while True:
-
-            choice = int(raw_input("BIN или HEX "))
-
-            if choice == 1:
-                print 'Вычитание BIN'
-                print subtractionBin()
-
-
-            elif choice == 2:
-                print 'Вычитание HEX'
-                print subtractionHex()
-            else:
-                print "введите 1 или 2 "
+        menu(x,y,z)
 
     elif choice == 0:
         exit()
