@@ -1,19 +1,19 @@
 # -*- coding: utf-8 -*-
-def menu(x,y,z):
+def menu(operationLabel,operationBin,operationHex):
         print "1: BIN "
         print "2: HEX "
 
         while True:
 
-            choice = int(raw_input("BIN или HEX "))
+            choice = raw_input("BIN или HEX ")
 
-            if choice == 1:
-                print x + ' BIN'
-                print y()
+            if choice == '1':
+                print operationLabel + ' BIN'
+                return operationBin()
 
-            elif choice == 2:
-                print x + ' HEX'
-                print z()
+            elif choice == '2':
+                print operationLabel + ' HEX'
+                return operationHex()
             else:
                 print "введите 1 или 2 "
 
@@ -116,21 +116,21 @@ print "0: выход"
 
 while True:
 
-    choice = int(raw_input("Выберите действие из списка  "))
+    choice = raw_input("Выберите действие из списка  ")
 
-    if choice == 1:
-        x = 'Сложение'
-        y = additionBin
-        z = additionHex
+    if choice == '1':
+        operationLabel = 'Сложение'
+        operationBin = additionBin
+        operationHex = additionHex
 
-        menu(x,y,z)
+        menu(operationLabel,operationBin,operationHex)
 
-    elif choice == 2:
-        x = 'Вычитание'
-        y = subtractionBin
-        z = subtractionHex
+    elif choice == '2':
+        operationLabel = 'Вычитание'
+        operationBin = subtractionBin
+        operationHex = subtractionHex
 
-        menu(x,y,z)
+        menu(operationLabel,operationBin,operationHex)
 
     elif choice == 0:
         exit()
