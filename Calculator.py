@@ -95,7 +95,7 @@ def additionHex():
     print calculationHex(result)
 
 def subtractionBin():
-    return "Введите два числа для вычитания"
+    print "Введите два числа для вычитания"
     firstNumber = int(raw_input("Первое число: "))
     secondNumber = int(raw_input("Второе число: "))
     result = int(firstNumber - secondNumber)
