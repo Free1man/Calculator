@@ -122,37 +122,51 @@ def calculationHex(result):
         print shownResult
 
 def additionBin():
+
     print "Введите два числа для сложения"
-    firstNumber = int(raw_input("Первое число: "))
-    secondNumber = int(raw_input("Второе число: "))
-    result = int(firstNumber + secondNumber)
-    print calculationBin(result)
+    try:
+        firstNumber = int(raw_input("Первое число: "))
+        secondNumber = int(raw_input("Второе число: "))
+        result = int(firstNumber + secondNumber)
+        print calculationBin(result)
+    except ValueError:
+        print "Неверный ввод, возможно вводить только цифры"
 
 
 def additionHex():
-    print "Введите два числа для сложения"
-    firstNumber = int(raw_input("Первое число: "))
-    secondNumber = int(raw_input("Второе число: "))
-    result = int(firstNumber + secondNumber)
-    print calculationHex(result)
+    
+    try:
+        print "Введите два числа для сложения"
+        firstNumber = int(raw_input("Первое число: "))
+        secondNumber = int(raw_input("Второе число: "))
+        result = int(firstNumber + secondNumber)
+        print calculationHex(result)
+    except ValueError:
+        print "Неверный ввод, возможно вводить только цифры"
 
 def subtractionBin():
-    print "Введите два числа для вычитания"
-    firstNumber = int(raw_input("Первое число: "))
-    secondNumber = int(raw_input("Второе число: "))
-    result = int(firstNumber - secondNumber)
-    print calculationBin(result)
+    
+    try:    
+        print "Введите два числа для вычитания"
+        firstNumber = int(raw_input("Первое число: "))
+        secondNumber = int(raw_input("Второе число: "))
+        result = int(firstNumber - secondNumber)
+        print calculationBin(result)
+    except ValueError:
+        print "Неверный ввод, возможно вводить только цифры"
+    
 
 def subtractionHex():
-    print "Введите два с для вычитания"
-    firstNumber = int(raw_input("Первое число: "))
-    secondNumber = int(raw_input("Второе число: "))
-    result = int(firstNumber - secondNumber)
-    print calculationHex(result)
+    try:   
+        print "Введите два с для вычитания"
+        firstNumber = int(raw_input("Первое число: "))
+        secondNumber = int(raw_input("Второе число: "))
+        result = int(firstNumber - secondNumber)
+        print calculationHex(result)
+    except ValueError:
+        print "Неверный ввод, возможно вводить только цифры"
 
 __name__ == '__main__'
-
-
 
 while True:
 
