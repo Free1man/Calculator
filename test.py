@@ -1,19 +1,25 @@
+from Tkinter import *
+
 import datetime
 
-def writeEventToFile():
+import ctypes
 
-    date = raw_input("Input date of Event:")
-    eventName = raw_input("input name of event:")
-    reminder = raw_input("Remind X days before:")
+import ttk
 
-    print 'Your event ' + eventName + ' '+' will start at ' + date + ' you will be reminded %s day(s) before' % reminder
+def writeEventToFile(event):
+
 
     data = open("data2.txt", "a")
-    data.write(str(date+' '+eventName+' '+reminder+'\n'))
+    data.write(date.get()+" ")
+    data.write(eventName.get()+" ")
+    data.write(reminder.get()+"\n")
     data.close()
 
+    text = 'Your event ' + eventName.get() + ' '+' will start at ' + date.get() + ' you will be reminded %s day(s) before' % reminder.get()
+    MessageBox = ctypes.windll.user32.MessageBoxA
+    MessageBox(None, text, 'Reminder', 0)
 
-def readEventFromFile():
+def readEventFromFile(event):
     data = open("data2.txt", "r")
     text = data.read()
     text = text.split()
@@ -29,30 +35,69 @@ def readEventFromFile():
         reminder = reminder + 3
     data.close()
 
+    data = open("data1.txt", "r")
+    text = data.read()
+    if len(text)<1:
+        MessageBox = ctypes.windll.user32.MessageBoxA
+        MessageBox(None, "No reminders", 'Reminder', 0)
+    elif len(text)>1:
+        MessageBox = ctypes.windll.user32.MessageBoxA
+        MessageBox(None, text, 'Reminder', 0)
+    open('data1.txt', 'w').close()
 
-def checkEvent(datefromfile,reminder):
+def checkEvent(datefromfile , reminder):
 
 
     currentDate = datetime.datetime.now()
     eventDate = datetime.datetime.strptime(datefromfile,"%Y-%m-%d")
-    reminderDate = eventDate + datetime.timedelta(days=-reminder)
+    reminderDate = eventDate - datetime.timedelta(days=reminder)
 
-    if currentDate < reminderDate:
-        print 'no events'
-    elif currentDate >= reminderDate:
-        print 'you have upcoming event'
+    if currentDate > eventDate:
+        print 'missed'
         print currentDate
         print eventDate
-        print datefromfile
         print reminderDate
         print reminder
+        print 'missed'
+    elif currentDate <= reminderDate:
+        data = open("data1.txt", "a")
+        data.write('You will have upcoming event on '+str(datefromfile)+'\n')
+        data.close()
+        print 'event'
+        print currentDate
+        print eventDate
+        print reminderDate
+        print reminder
+        print 'event'
 
-now =  datetime.datetime.now()
 
-print "Current time "+ now.strftime("%Y-%m-%d")
-x = raw_input()
+__name__ == '__main__'
 
-if x == '1':
-    writeEventToFile()
-elif x == '2':
-    readEventFromFile()
+root = Tk()
+root.geometry("250x200")
+
+dateLabel = Label(root,text="Date YYYY-MM-DD")
+dateLabel.pack( side = TOP)
+date = Entry(bd =2)
+date.pack()
+
+eventNameLabel = Label(root,text="Event Name")
+eventNameLabel.pack( side = TOP)
+eventName = Entry(bd =2)
+eventName.pack()
+
+reminderLabel = Label(root,text="Remind days before")
+reminderLabel.pack( side = TOP)
+reminder = Entry(bd =2)
+reminder.pack()
+
+root.wm_title("Reminder")
+Read = ttk.Button(root, text="Read", width=30)
+Read.bind("<Button-1>",readEventFromFile)
+Write = ttk.Button(root, text="Write", width=30)
+Write.bind("<Button-1>",writeEventToFile)
+Write.pack()
+Read.pack()
+
+
+root.mainloop()
