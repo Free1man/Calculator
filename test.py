@@ -70,7 +70,7 @@ def checkEvent(datefromfile, reminder):
         print 'event'
 
 
-__name__ == '__main__'
+if __name__ == '__main__'
 
 root = Tk()
 root.geometry("250x200")
