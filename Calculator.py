@@ -194,4 +194,7 @@ while True:
         exit()
     else:
         print "введите 1 или 2 "
+        
+        
+        
 
